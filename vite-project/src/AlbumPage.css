@@ -1,0 +1,313 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cinzel:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&display=swap');
+
+body {
+    background: #050a30 url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+    color: #d4e8ff;
+    font-family: 'Cormorant Garamond', serif;
+    text-align: center;
+    overflow-x: hidden;
+    margin: 0;
+    position: relative;
+    min-height: 100vh;
+}
+
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.solarsystemscope.com/textures/download/2k_stars.jpg') repeat;
+    opacity: 0.3;
+    z-index: -1;
+    animation: parallaxStars 100s linear infinite;
+}
+
+@keyframes parallaxStars {
+    from { background-position: 0 0; }
+    to { background-position: 1000px 1000px; }
+}
+
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, transparent 50%, rgba(5, 10, 48, 0.8) 100%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+
+.album-page {
+    padding: 50px 40px;
+    max-width: 70vw;
+    margin: 60px auto;
+    background: rgba(15, 15, 35, 0.9);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 
+        0 0 30px rgba(100, 100, 255, 0.3),
+        0 0 60px rgba(150, 150, 255, 0.2),
+        inset 0 0 40px rgba(100, 100, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+
+.album-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid rgba(150, 150, 255, 0.2);
+    border-radius: 15px;
+    background: 
+        linear-gradient(90deg, transparent 95%, rgba(150, 150, 255, 0.3) 98%, transparent 100%),
+        linear-gradient(0deg, transparent 95%, rgba(150, 150, 255, 0.3) 98%, transparent 100%);
+    background-size: 20px 20px;
+    pointer-events: none;
+}
+
+
+.album-page::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(150, 150, 255, 0.3) 0%, transparent 10%) top left/50% 50% no-repeat,
+        radial-gradient(circle at 100% 0%, rgba(150, 150, 255, 0.3) 0%, transparent 10%) top right/50% 50% no-repeat,
+        radial-gradient(circle at 0% 100%, rgba(150, 150, 255, 0.3) 0%, transparent 10%) bottom left/50% 50% no-repeat,
+        radial-gradient(circle at 100% 100%, rgba(150, 150, 255, 0.3) 0%, transparent 10%) bottom right/50% 50% no-repeat;
+    pointer-events: none;
+}
+
+
+.album-page img {
+    max-width: 200px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    background: linear-gradient(to right, #5b5b8e, #8989cc) border-box;
+    box-shadow: 
+        0 0 15px rgba(150, 150, 255, 0.7),
+        0 0 30px rgba(120, 120, 255, 0.4);
+    transition: all 0.6s ease-in-out;
+    filter: drop-shadow(0 0 10px rgba(150, 190, 255, 0.6));
+    position: relative;
+    z-index: 2;
+}
+
+.album-page img:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 
+        0 0 25px rgba(150, 150, 255, 0.9),
+        0 0 50px rgba(120, 120, 255, 0.6);
+}
+
+
+.album-page h1 {
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 2.5rem;
+    background: linear-gradient(to right, #aab3ff, #d4e8ff, #aab3ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 15px rgba(100, 100, 255, 0.6);
+    animation: titleGlow 3s infinite alternate ease-in-out;
+    margin: 30px 0 20px;
+    letter-spacing: 2px;
+}
+
+@keyframes titleGlow {
+    from { text-shadow: 0 0 10px rgba(100, 100, 255, 0.4); filter: brightness(0.9); }
+    to { text-shadow: 0 0 25px rgba(150, 150, 255, 0.8); filter: brightness(1.1); }
+}
+
+
+.album-page ul {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+    position: relative;
+}
+
+.album-page li {
+    padding: 18px 25px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+    border: none;
+    background: rgba(25, 25, 60, 0.7);
+    border-radius: 8px;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.album-page li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, #5b5b8e, transparent);
+    opacity: 0.7;
+    transition: all 0.4s ease;
+}
+
+.album-page li:hover {
+    background: rgba(35, 35, 80, 0.9);
+    transform: scale(1.03) translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 40, 0.5);
+}
+
+.album-page li:hover::before {
+    width: 10px;
+    opacity: 1;
+    background: linear-gradient(to bottom, #8989cc, #5b5b8e);
+}
+
+
+.album-page audio {
+    width: 70%;
+    max-width: 220px;
+    filter: hue-rotate(20deg) drop-shadow(0 0 8px rgba(150, 150, 255, 0.7));
+    opacity: 0.85;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+}
+
+.album-page audio:hover {
+    opacity: 1;
+    filter: hue-rotate(0deg) drop-shadow(0 0 12px rgba(150, 150, 255, 0.9));
+}
+
+
+.album-page button {
+    margin: 15px 10px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #3b3b6f 0%, #505091 50%, #3b3b6f 100%);
+    color: #fff;
+    border: 1px solid rgba(150, 150, 255, 0.4);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.album-page button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+    z-index: -1;
+}
+
+.album-page button:hover {
+    background: linear-gradient(135deg, #505091 0%, #7070a8 50%, #505091 100%);
+    box-shadow: 
+        0 0 15px rgba(150, 150, 255, 0.6),
+        0 0 30px rgba(100, 100, 255, 0.3);
+    transform: translateY(-5px);
+    letter-spacing: 2px;
+}
+
+.album-page button:hover::before {
+    left: 100%;
+}
+
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: rgba(150, 150, 255, 0.5);
+    border-radius: 50%;
+    animation: float 15s infinite linear;
+}
+
+
+@media (max-width: 768px) {
+    .album-page {
+        padding: 30px 20px;
+        margin: 40px 20px;
+    }
+    
+    .album-page h1 {
+        font-size: 2rem;
+    }
+    
+    .album-page img {
+        max-width: 200px;
+    
+    }
+    
+    .album-page li {
+        flex-direction: row;
+        text-align: center;
+        padding: 15px;
+    }
+}
+
+.track-list {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.album-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.track-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.track-list li {
+    margin: 10px 0;
+} */

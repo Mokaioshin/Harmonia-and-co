@@ -1,0 +1,206 @@
+:root {
+    --ranni-primary: #6c89d1;
+    --ranni-secondary: #a4b8e8;
+    --ranni-dark: #151c33;
+    --ranni-darker: #0a0f23;
+    --ranni-accent: #8ba3e0;
+    --ranni-glow: rgba(140, 190, 255, 0.6);
+    --ranni-border: rgba(160, 180, 255, 0.4);
+    --star-color: rgba(210, 230, 255, 0.8);
+}
+
+body {
+    background: radial-gradient(ellipse at bottom, var(--ranni-dark), var(--ranni-darker));
+    font-family: 'Cormorant Garamond', serif;
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+    text-align: center;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(var(--star-color) 1px, transparent 1px), 
+                radial-gradient(var(--star-color) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+    opacity: 0.3;
+    animation: twinkling 8s linear infinite;
+    z-index: -1;
+}
+
+
+h1, h2, h3 {
+    font-family: 'Cinzel', serif;
+    text-shadow: 0 0 10px var(--ranni-glow);
+    margin-bottom: 15px;
+    text-align: center;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    word-wrap: break-word;
+}
+
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.5rem; }
+
+
+.result, .album-page {
+    background: rgba(10, 15, 35, 0.85);
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px var(--ranni-glow), 0 0 40px rgba(140, 190, 255, 0.2) inset;
+    width: 95%;
+    max-width: 1400px;
+    margin: 20px auto;
+    border: 1px solid var(--ranni-border);
+    backdrop-filter: blur(8px);
+}
+
+
+.album-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(20, 30, 70, 0.7);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s, box-shadow 0.4s;
+    cursor: pointer;
+    width: 280px;
+    height: auto;
+    text-align: center;
+    border: 1px solid var(--ranni-border);
+}
+
+.card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.5s, filter 0.5s;
+    filter: brightness(0.85) contrast(1.1);
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    max-width: 90%;
+    word-wrap: break-word;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 25px var(--ranni-glow);
+    background: rgba(30, 40, 90, 0.8);
+}
+
+.card:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1) contrast(1.2);
+}
+
+
+.search-container {
+    display: flex;
+    gap: 15px;
+    max-width: 350px;
+    margin: 30px auto;
+}
+
+.search-input {
+    flex: 1;
+    padding: 15px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--ranni-border);
+    background: rgba(20, 30, 60, 0.7);
+    color: white;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-input:focus {
+    border-color: var(--ranni-accent);
+    box-shadow: 0 0 15px var(--ranni-glow);
+}
+
+
+.search-button {
+    padding: 12px 24px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(135deg, #4458dd, #6c89d1);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.search-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(85, 105, 230, 0.4);
+}
+
+
+.tracklist {
+    list-style: none;
+    padding: 0;
+    margin: 25px auto;
+    text-align: left;
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.tracklist li {
+    background: rgba(25, 35, 70, 0.7);
+    padding: 15px 18px;
+    border-radius: 10px;
+    width: calc(50% - 15px);
+    transition: background 0.3s;
+}
+
+.tracklist li:hover {
+    background: rgba(35, 45, 90, 0.9);
+}
+
+@media (max-width: 900px) {
+    .tracklist li {
+        width: 100%;
+    }
+}
+
+
+.back-button {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 1px solid var(--ranni-border);
+    background: rgba(25, 35, 70, 0.7);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.4s, background 0.4s, box-shadow 0.4s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto 25px;
+}
+
+.back-button:hover {
+    background: rgba(35, 45, 90, 0.9);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+}
